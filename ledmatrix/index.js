@@ -1,0 +1,4 @@
+
+jQuery.ready(function($) {
+    alert("");
+});
