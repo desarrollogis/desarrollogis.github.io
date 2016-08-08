@@ -6,6 +6,7 @@ function getStorage() {
         ledMatrix = JSON.parse(ledMatrix);
     }
     catch (e) {
+        ledMatrix = {};
     }
     if (typeof(ledMatrix) != "object") {
         ledMatrix = {};
