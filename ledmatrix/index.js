@@ -2,15 +2,18 @@
 function getStorage() {
     var ledMatrix = localStorage.getItem("ledMatrix");
 
+    alert(typeof(ledMatrix));
     try {
         ledMatrix = JSON.parse(ledMatrix);
     }
     catch (e) {
         ledMatrix = {};
     }
+    alert(typeof(ledMatrix));
     if (typeof(ledMatrix) != "object") {
         ledMatrix = {};
     }
+    alert(typeof(ledMatrix));
     if (typeof(ledMatrix["chars"]) != "object") {
         ledMatrix["chars"] = {};
     }
