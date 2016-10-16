@@ -27,9 +27,19 @@ angular.module("MainApp", ["ngRoute", "Security"]).config(function($routeProvide
         $scope.auth();
     });
     $scope.edit = function(key, value) {
+        var i, j = 0, m;
+
         $scope.name = key;
         $scope.size = value.size;
         $scope.bits = value.bits;
+        for (i = 0, m = value.bits.length; i < m; ++i) {
+            if (value.bits[i] == "0") {
+                $("table.matrix input").eq(++j).prop("checked", false);
+            }
+            else if (value.bits[i] == "1") {
+                $("table.matrix input").eq(++j).prop("checked", true);
+            }
+        }
     };
     $scope.addBits = function() {
         var updates = {};
