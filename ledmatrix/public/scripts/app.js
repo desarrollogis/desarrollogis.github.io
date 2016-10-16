@@ -27,7 +27,7 @@ angular.module("MainApp", ["ngRoute", "Security"]).config(function($routeProvide
         $scope.auth();
     });
     $scope.edit = function(key, value) {
-        var i, j = 0, m;
+        var i, j = -1, m;
 
         $scope.name = key;
         $scope.size = value.size;
@@ -59,6 +59,7 @@ angular.module("MainApp", ["ngRoute", "Security"]).config(function($routeProvide
             }
             result = result + ($(element).is(":checked") ? "1" : "0");
         });
-        $("input#bits").val(result);
+        $scope.bits = result;
+        $scope.$applyAsync();
     });
 });
