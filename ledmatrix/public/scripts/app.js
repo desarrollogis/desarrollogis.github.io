@@ -38,4 +38,17 @@ angular.module("MainApp", ["ngRoute", "Security"]).config(function($routeProvide
         updates["bits"] = $scope.bits;
         firebase.database().ref("characters").child($scope.name).update(updates);
     };
+    $("table.matrix input").click(function() {
+        var result = "";
+        var separator = "B";
+
+        $("table.matrix input").each(function(index, element) {
+            if ((index % 8) == 0) {
+                result = result + separator;
+                separator = ",B";
+            }
+            result = result + ($(element).is(":checked") ? "1" : "0");
+        });
+        $("input#bits").val(result);
+    });
 });
