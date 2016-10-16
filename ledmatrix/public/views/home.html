@@ -4,4 +4,37 @@
 			<h1 class="page-header">{{user.email || 'Please log in'}}</h1>
 		</div>
 	</div>
+	<div class="row">
+		<form ng-submit="addBits()">
+			<div class="col-md-2">
+				<div class="btn-group-vertical" role="group" aria-label="..." style="width: 100%;">
+					<button type="button" class="btn btn-default" ng-repeat="(key, value) in items" ng-click="edit(key, value)">{{key}}</button>
+				</div>
+			</div>
+			<div class="col-md-1">
+				<input type="text" class="form-control" placeholder="name" ng-model="name" required/>
+			</div>
+			<div class="col-md-1">
+				<input type="text" class="form-control" placeholder="size" ng-model="size" required/>
+			</div>
+			<div class="col-md-6">
+				<input type="text" class="form-control" placeholder="bits" ng-model="bits" required/>
+			</div>
+			<div class="col-md-2">
+				<input class="btn btn-warning" type="submit" value="Update"/>
+				<button type="button" class="btn btn-danger">Delete</button>
+			</div>
+		</form>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-striped table-hover">
+				<tr ng-repeat="(key, value) in items">
+					<td>
+						'{{key}}',{{value.bits}},{{value.size}},
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </div>
