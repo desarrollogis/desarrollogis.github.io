@@ -14,19 +14,18 @@ angular.module("Security", ["firebase"]).controller("SecurityController", functi
             profileWatch = $rootScope.profile.$watch(function(event) {
                 var email = "email" in $rootScope.profile ? $rootScope.profile.email : null;
                 var role = "role" in $rootScope.profile ? $rootScope.profile.role : null;
-                var updates = {};
                 var update = false;
 
                 if (!email) {
-                    updates["email"] = $rootScope.user.email;
+                    $rootScope.profile.email = $rootScope.user.email;
                     update = true;
                 }
                 if (!role) {
-                    updates["role"] = "user";
+                    $rootScope.profile.role = "user";
                     update = true;
                 }
                 if (update) {
-                    $rootScope.profile.$ref().set(updates);
+                    $rootScope.profile.$save();
                 }
             });
         }
